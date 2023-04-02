@@ -1,12 +1,7 @@
-use std::env;
-use std::process;
-
-use xgrep::Config;
+use std::{env, process};
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = xgrep::Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Failed to parsed arguments: {err}");
         process::exit(1);
     });
